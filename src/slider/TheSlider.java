@@ -24,6 +24,66 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         this.bean = bean;
     }
 
+    protected String imageFolder;
+
+    /**
+     * Get the value of imageFolder
+     *
+     * @return the value of imageFolder
+     */
+    public String getImageFolder() {
+        return imageFolder;
+    }
+
+    /**
+     * Set the value of imageFolder
+     *
+     * @param imageFolder new value of imageFolder
+     */
+    public void setImageFolder(String imageFolder) {
+        this.imageFolder = imageFolder;
+    }
+    protected int interval;
+
+    /**
+     * Get the value of interval
+     *
+     * @return the value of interval
+     */
+    public int getInterval() {
+        return interval;
+    }
+
+    /**
+     * Set the value of interval
+     *
+     * @param interval new value of interval
+     */
+    public void setInterval(int interval) {
+        this.interval = interval;
+    }
+    
+    protected boolean controlVisible;
+
+    /**
+     * Get the value of controlVisible
+     *
+     * @return the value of controlVisible
+     */
+    public boolean isControlVisible() {
+        return controlVisible;
+    }
+
+    /**
+     * Set the value of controlVisible
+     *
+     * @param controlVisible new value of controlVisible
+     */
+    public void setControlVisible(boolean controlVisible) {
+        this.controlVisible = controlVisible;
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

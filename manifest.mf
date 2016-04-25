@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Name: /Slider/TheSlider.class
+Name: /slider/TheSlider.class
 Java-Bean: True
 
