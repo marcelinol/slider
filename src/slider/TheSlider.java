@@ -5,6 +5,12 @@
  */
 package slider;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author marcelinol
@@ -12,19 +18,61 @@ package slider;
 public class TheSlider extends javax.swing.JPanel implements java.beans.Customizer {
     
     private Object bean;
+    private java.util.Timer timer;
+    private int fileOnfolder;
+    private File [] listOfFiles;
 
     /**
      * Creates new customizer TheSlider
      */
     public TheSlider() {
+        imageFolder = "c:\\teste\\";
+        File folder = new File(imageFolder);
+        
+       
+        listOfFiles = folder.listFiles();
+        fileOnfolder = listOfFiles.length;
+        
         initComponents();
+        
+ 
+        TheSlider componente = this;
+        timer = new java.util.Timer();
+            timer.schedule(new java.util.TimerTask() {
+                public void run() {
+                    
+                    currentFile = listOfFiles[componente.getContador()];
+                    componente.jLabel1.repaint();
+                    componente.incrementaContador(componente.fileOnfolder);
+                }
+              },
+              interval*1000 /* tempo para 1a execução */,
+              interval*1000 /* intervalo de repetição */
+            );
+         
+        
     }
     
     public void setObject(Object bean) {
         this.bean = bean;
     }
+    
+    public int getContador() {
+        return this.contador;
+    }
+    
+    public void incrementaContador(int maximo) {
+        if(contador == (maximo - 1)) {
+            this.contador = 0;
+        } else {
+            this.contador++;
+        }
+        
+    }
 
     protected String imageFolder;
+    int contador = 0;
+    private File currentFile;
 
     /**
      * Get the value of imageFolder
@@ -43,7 +91,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     public void setImageFolder(String imageFolder) {
         this.imageFolder = imageFolder;
     }
-    protected int interval;
+    protected int interval = 1;
 
     /**
      * Get the value of interval
@@ -51,6 +99,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
      * @return the value of interval
      */
     public int getInterval() {
+        
         return interval;
     }
 
@@ -92,13 +141,30 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1 =  new javax.swing.JLabel() {
+            @Override
+            public void paint(Graphics g) {
+                try {
+                    BufferedImage img = ImageIO.read(currentFile);
+                    g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
+                } catch (IOException ioe) { ioe.printStackTrace(); }
+            }
+        };
+        btnStop = new javax.swing.JButton();
         nextImageButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
         jLabel1.setText("jLabel1");
         add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        btnStop.setText("Stop");
+        btnStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStopActionPerformed(evt);
+            }
+        });
+        add(btnStop, java.awt.BorderLayout.PAGE_START);
 
         nextImageButton.setText("Próxima imagem");
         nextImageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,11 +176,18 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextImageButtonActionPerformed
-        // TODO add your handling code here:
+        this.incrementaContador(fileOnfolder);
+        this.currentFile = listOfFiles[this.contador];
+        jLabel1.repaint();
     }//GEN-LAST:event_nextImageButtonActionPerformed
+
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
+        this.timer.cancel();
+    }//GEN-LAST:event_btnStopActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnStop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton nextImageButton;
     // End of variables declaration//GEN-END:variables
