@@ -65,7 +65,14 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         } else {
             this.contador++;
         }
-        
+    }
+
+    public void decrementaContador() {
+        if(contador == 0) {
+            this.contador = this.listOfFiles.length - 1;
+        } else {
+            this.contador--;
+        }
     }
 
     protected String imageFolder;
@@ -231,7 +238,9 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void previousImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousImageButtonActionPerformed
-        // TODO add your handling code here:
+        this.decrementaContador();
+        this.currentFile = listOfFiles[this.contador];
+        jLabel1.repaint();
     }//GEN-LAST:event_previousImageButtonActionPerformed
 
 
