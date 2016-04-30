@@ -27,28 +27,24 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     public TheSlider() {
         imageFolder = "/home/marcelinol/Pictures/wallpapers";
         File folder = new File(imageFolder);
-        
-       
         listOfFiles = folder.listFiles();
-        
         initComponents();
-        
- 
+        play();
+    }
+    
+    public void play() {
         TheSlider componente = this;
         timer = new java.util.Timer();
-            timer.schedule(new java.util.TimerTask() {
-                public void run() {
-                    
-                    currentFile = listOfFiles[componente.getContador()];
-                    componente.jLabel1.repaint();
-                    componente.incrementaContador();
-                }
-              },
-              interval*1000 /* tempo para 1a execução */,
-              interval*1000 /* intervalo de repetição */
-            );
-         
-        
+        timer.schedule(new java.util.TimerTask() {
+            public void run() {
+                currentFile = listOfFiles[componente.getContador()];
+                componente.imageLabel.repaint();
+                componente.incrementaContador();
+            }
+        },
+        interval*1000 /* tempo para 1a execução */,
+        interval*1000 /* intervalo de repetição */
+        );
     }
     
     public void setObject(Object bean) {
@@ -146,7 +142,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 =  new javax.swing.JLabel() {
+        imageLabel =  new javax.swing.JLabel() {
              @Override
              public void paint(Graphics g) {
                  try {
@@ -160,7 +156,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         btnPlay = new javax.swing.JButton();
         previousImageButton = new javax.swing.JButton();
 
-        jLabel1.setText("jLabel1");
+        imageLabel.setText("imageLabel");
 
         btnStop.setText("Stop");
         btnStop.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +193,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(previousImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,7 +208,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextImageButton)
@@ -230,7 +226,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     private void nextImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextImageButtonActionPerformed
         this.incrementaContador();
         this.currentFile = listOfFiles[this.contador];
-        jLabel1.repaint();
+        imageLabel.repaint();
     }//GEN-LAST:event_nextImageButtonActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
@@ -240,14 +236,14 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     private void previousImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousImageButtonActionPerformed
         this.decrementaContador();
         this.currentFile = listOfFiles[this.contador];
-        jLabel1.repaint();
+        imageLabel.repaint();
     }//GEN-LAST:event_previousImageButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnStop;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JButton nextImageButton;
     private javax.swing.JButton previousImageButton;
     // End of variables declaration//GEN-END:variables
