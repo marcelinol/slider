@@ -19,7 +19,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     
     private Object bean;
     private java.util.Timer timer;
-    private int fileOnfolder;
     private File [] listOfFiles;
 
     /**
@@ -31,7 +30,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         
        
         listOfFiles = folder.listFiles();
-        fileOnfolder = listOfFiles.length;
         
         initComponents();
         
@@ -43,7 +41,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
                     
                     currentFile = listOfFiles[componente.getContador()];
                     componente.jLabel1.repaint();
-                    componente.incrementaContador(componente.fileOnfolder);
+                    componente.incrementaContador();
                 }
               },
               interval*1000 /* tempo para 1a execução */,
@@ -61,8 +59,8 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         return this.contador;
     }
     
-    public void incrementaContador(int maximo) {
-        if(contador == (maximo - 1)) {
+    public void incrementaContador() {
+        if(contador == (this.listOfFiles.length - 1)) {
             this.contador = 0;
         } else {
             this.contador++;
@@ -223,7 +221,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void nextImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextImageButtonActionPerformed
-        this.incrementaContador(fileOnfolder);
+        this.incrementaContador();
         this.currentFile = listOfFiles[this.contador];
         jLabel1.repaint();
     }//GEN-LAST:event_nextImageButtonActionPerformed
