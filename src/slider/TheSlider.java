@@ -29,6 +29,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         File folder = new File(imageFolder);
         listOfFiles = folder.listFiles();
         initComponents();
+        btnPlay.setEnabled(false);
         play();
     }
     
@@ -221,6 +222,8 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
 
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
         this.timer.cancel();
+        btnPlay.setEnabled(true);
+        btnStop.setEnabled(false);
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void nextImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextImageButtonActionPerformed
@@ -230,7 +233,9 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     }//GEN-LAST:event_nextImageButtonActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
-        // TODO add your handling code here:
+        play();
+        btnStop.setEnabled(true);
+        btnPlay.setEnabled(false);
     }//GEN-LAST:event_btnPlayActionPerformed
 
     private void previousImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousImageButtonActionPerformed
