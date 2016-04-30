@@ -26,7 +26,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
      * Creates new customizer TheSlider
      */
     public TheSlider() {
-        imageFolder = "c:\\teste\\";
+        imageFolder = "/home/marcelinol/Pictures/wallpapers";
         File folder = new File(imageFolder);
         
        
@@ -142,21 +142,20 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     private void initComponents() {
 
         jLabel1 =  new javax.swing.JLabel() {
-            @Override
-            public void paint(Graphics g) {
-                try {
-                    BufferedImage img = ImageIO.read(currentFile);
-                    g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
-                } catch (IOException ioe) { ioe.printStackTrace(); }
-            }
-        };
+             @Override
+             public void paint(Graphics g) {
+                 try {
+                 BufferedImage img = ImageIO.read(currentFile);
+                 g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
+                 } catch (IOException ioe) { ioe.printStackTrace(); }
+             }
+         };
         btnStop = new javax.swing.JButton();
         nextImageButton = new javax.swing.JButton();
-
-        setLayout(new java.awt.BorderLayout());
+        btnPlay = new javax.swing.JButton();
+        previousImageButton = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
-        add(jLabel1, java.awt.BorderLayout.CENTER);
 
         btnStop.setText("Stop");
         btnStop.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +163,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
                 btnStopActionPerformed(evt);
             }
         });
-        add(btnStop, java.awt.BorderLayout.PAGE_START);
 
         nextImageButton.setText("Próxima imagem");
         nextImageButton.addActionListener(new java.awt.event.ActionListener() {
@@ -172,8 +170,57 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
                 nextImageButtonActionPerformed(evt);
             }
         });
-        add(nextImageButton, java.awt.BorderLayout.PAGE_END);
+
+        btnPlay.setText("Play");
+        btnPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayActionPerformed(evt);
+            }
+        });
+
+        previousImageButton.setText("Imagem anterior");
+        previousImageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousImageButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(previousImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nextImageButton)
+                    .addComponent(btnStop)
+                    .addComponent(btnPlay)
+                    .addComponent(previousImageButton))
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
+        this.timer.cancel();
+    }//GEN-LAST:event_btnStopActionPerformed
 
     private void nextImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextImageButtonActionPerformed
         this.incrementaContador(fileOnfolder);
@@ -181,14 +228,20 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         jLabel1.repaint();
     }//GEN-LAST:event_nextImageButtonActionPerformed
 
-    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
-        this.timer.cancel();
-    }//GEN-LAST:event_btnStopActionPerformed
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPlayActionPerformed
+
+    private void previousImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousImageButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_previousImageButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnStop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton nextImageButton;
+    private javax.swing.JButton previousImageButton;
     // End of variables declaration//GEN-END:variables
 }
