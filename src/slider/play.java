@@ -16,8 +16,10 @@ public class play {
     
     public static void main(String args[]){
         JFrame frame = new JFrame( "TESTE");
-        TheSlider slider = new TheSlider();
+        TheSlider slider;
+        slider = new TheSlider();
         frame.add(slider);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
     }
 }
