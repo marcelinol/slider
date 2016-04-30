@@ -30,7 +30,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     private File [] listOfFiles;
     int contador = 0;
     
-    
     /**
      * Creates new customizer TheSlider
      */
@@ -52,7 +51,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
                 componente.imageLabel.repaint();
             }
         },
-        interval*1000 /* tempo para 1a execução */,
+        interval*1000, /* tempo para 1a execução */
         interval*1000 /* intervalo de repetição */
         );
     }
@@ -146,6 +145,16 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 =  new javax.swing.JLabel() {
+            @Override
+            public void paint(Graphics g) {
+                try {
+                    BufferedImage img = ImageIO.read(currentFile);
+                    g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
+                } catch (IOException ioe) { ioe.printStackTrace(); }
+            }
+        };
         imageLabel =  new javax.swing.JLabel() {
              @Override
              public void paint(Graphics g) {
@@ -160,7 +169,15 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         btnPlay = new javax.swing.JButton();
         previousImageButton = new javax.swing.JButton();
 
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1);
+
         imageLabel.setText("imageLabel");
+        imageLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imageLabelMouseClicked(evt);
+            }
+        });
 
         btnStop.setText("Stop");
         btnStop.addActionListener(new java.awt.event.ActionListener() {
@@ -247,11 +264,20 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         imageLabel.repaint();
     }//GEN-LAST:event_previousImageButtonActionPerformed
 
+    private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
+        if(evt.getClickCount() == 2) {
+            // ABRIR IMAGEM MAXIMIZADA
+            // jPanel1.setVisible(true); // nao ta funcionando
+        }
+    }//GEN-LAST:event_imageLabelMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPlay;
     private javax.swing.JButton btnStop;
     private javax.swing.JLabel imageLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton nextImageButton;
     private javax.swing.JButton previousImageButton;
     // End of variables declaration//GEN-END:variables

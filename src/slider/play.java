@@ -5,6 +5,7 @@
  */
 package slider;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.JFrame;
 
 /**
@@ -19,6 +20,7 @@ public class play {
         TheSlider slider;
         slider = new TheSlider();
         frame.add(slider);
+//        frame.setSize(650, 450); // Estava escondendo os botoes
         frame.setVisible(true);
         frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
     }
