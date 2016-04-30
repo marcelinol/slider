@@ -17,10 +17,20 @@ import javax.imageio.ImageIO;
  */
 public class TheSlider extends javax.swing.JPanel implements java.beans.Customizer {
     
+    
+    /** Requisitos do trabalho **/
+    protected String imageFolder;
+    protected int interval = 1;
+    protected boolean controlVisible = true;
+    private File currentFile;
+    /** --------------------- **/
+    
     private Object bean;
     private java.util.Timer timer;
     private File [] listOfFiles;
-
+    int contador = 0;
+    
+    
     /**
      * Creates new customizer TheSlider
      */
@@ -72,10 +82,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         }
     }
 
-    protected String imageFolder;
-    int contador = 0;
-    private File currentFile;
-
     /**
      * Get the value of imageFolder
      *
@@ -93,7 +99,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     public void setImageFolder(String imageFolder) {
         this.imageFolder = imageFolder;
     }
-    protected int interval = 1;
 
     /**
      * Get the value of interval
@@ -114,7 +119,6 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         this.interval = interval;
     }
     
-    protected boolean controlVisible;
 
     /**
      * Get the value of controlVisible
