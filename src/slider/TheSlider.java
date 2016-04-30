@@ -48,9 +48,9 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
         timer = new java.util.Timer();
         timer.schedule(new java.util.TimerTask() {
             public void run() {
+                componente.incrementaContador();
                 currentFile = listOfFiles[componente.getContador()];
                 componente.imageLabel.repaint();
-                componente.incrementaContador();
             }
         },
         interval*1000 /* tempo para 1a execução */,
@@ -75,7 +75,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     }
 
     public void decrementaContador() {
-        if(contador == 0) {
+        if(this.contador == 0) {
             this.contador = this.listOfFiles.length - 1;
         } else {
             this.contador--;
