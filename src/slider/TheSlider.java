@@ -34,7 +34,7 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
      * Creates new customizer TheSlider
      */
     public TheSlider() {
-        imageFolder = "/home/marcelinol/Pictures/wallpapers";
+        imageFolder = "images";
         listOfFiles = new File(imageFolder).listFiles();
         initComponents();
         btnPlay.setEnabled(false);
