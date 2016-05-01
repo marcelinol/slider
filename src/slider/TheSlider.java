@@ -265,10 +265,10 @@ public class TheSlider extends javax.swing.JPanel implements java.beans.Customiz
     }//GEN-LAST:event_previousImageButtonActionPerformed
 
     private void imageLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imageLabelMouseClicked
-        if(evt.getClickCount() == 2) {
+//        if(evt.getClickCount() == 2) {
             // ABRIR IMAGEM MAXIMIZADA
             // jPanel1.setVisible(true); // nao ta funcionando
-        }
+//        }
     }//GEN-LAST:event_imageLabelMouseClicked
 
 
