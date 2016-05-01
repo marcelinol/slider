@@ -6,12 +6,28 @@
 package slider;
 
 import java.beans.*;
+import java.io.File;
 
 /**
  *
  * @author 03148014995
  */
 public class TheSliderBeanInfo extends SimpleBeanInfo {
+
+    public File iconNameC16;
+    public File iconNameC32;
+    public File iconNameM16;
+    public File iconNameM32;
+    
+    public TheSliderBeanInfo() {
+        beanDescriptor.setName("Slider");
+        beanDescriptor.setShortDescription("Passador de imagens");
+        iconNameC16 = new File("icons/pokeball.png");
+        iconNameM16 = new File("icons/pokeballmono.png");
+        iconNameC32 = new File("icons/pokeball32.png");
+        iconNameM32 = new File("icons/pokeballmono32.png");
+    }
+    
 
     // Bean descriptor information will be obtained from introspection.//GEN-FIRST:BeanDescriptor
     private static BeanDescriptor beanDescriptor = null;
