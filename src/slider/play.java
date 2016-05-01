@@ -17,10 +17,11 @@ public class play {
     
     public static void main(String args[]){
         JFrame frame = new JFrame( "TESTE");
+//        frame.setSize(650, 450); // Estava escondendo os botoes
+//        frame.setBounds(30, 30, 600, 450); // Funciona, mas esconde os botoes
         TheSlider slider;
         slider = new TheSlider();
         frame.add(slider);
-//        frame.setSize(650, 450); // Estava escondendo os botoes
         frame.setVisible(true);
         frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
     }
